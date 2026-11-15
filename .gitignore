@@ -1,0 +1,5 @@
+/build/
+/*.cia
+/tools/*.exe
+/romfs/bgm64.ogg
+/romfs/music/

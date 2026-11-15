@@ -1,0 +1,1 @@
+Shield Checker v1.1.0; CIA internal version 7; Title ID 000400000A210600; automatic tool version checks before quick software or advanced software-and-hardware diagnostics; new HOME banner and top-screen boot splash; new diagnostic flow not hardware-tested.

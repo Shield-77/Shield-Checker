@@ -1,0 +1,5 @@
+*.bgr binary
+*.rgb binary
+*.png binary
+*.wav binary
+*.bin binary

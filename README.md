@@ -1,48 +1,25 @@
-# Shield Checker pour console 3DS
+# Shield Checker
 
-Shield Checker aide a voir simplement si les outils importants de la console sont a jour. Il verifie Luma3DS, GodMode9, Universal Updater, Shield Updater et le client hShop/3hs s'ils sont installes sur la carte SD.
+Shield Checker aide à comprendre l’état d’une console 3DS avec des explications simples. Il lit des informations locales et peut comparer certaines versions à des releases publiques. **Il ne répare rien, ne télécharge aucun CIA et ne modifie aucun fichier système.** Les résultats sont informatifs : une absence ou un statut indisponible ne prouve pas une panne.
 
-Cette application est encore en developpement. Ses controles ne couvrent pas tous les chemins ou configurations possibles : les resultats sont informatifs et ne remplacent pas un guide officiel.
+La version actuelle est [v1.1.0](https://github.com/Shield-77/Shield-Checker/releases/tag/v1.1.0), avec le CIA [ShieldChecker.cia](https://github.com/Shield-77/Shield-Checker/releases/download/v1.1.0/ShieldChecker.cia). Title ID : `000400000A210600`.
 
-## A savoir
+## Utiliser l’application
 
-Shield Checker est un outil de consultation seulement. Il ne telecharge ni n'installe d'application et ne modifie aucun fichier systeme. Il compare les versions locales avec les dernieres versions stables trouvees sur GitHub. La recherche en ligne se fait au lancement de la verification; parcourir les resultats ne relance pas le reseau. Il enregistre uniquement le choix de langue dans sdmc:/3ds/ShieldChecker/ui-language.dat.
+- **Vérification rapide** : compare automatiquement les versions de Luma3DS, GodMode9, Universal Updater, Shield Updater et hShop/3hs, puis affiche les points logiciels. Les résultats sont regroupés sans devoir ouvrir chaque outil.
+- **Vérification avancée** : commence par les mêmes versions, puis ajoute modèle, mémoire accessible aux applications, batterie, carte SD, volume, casque, Wi-Fi et curseur 3D selon le modèle. Le test HTTPS avec R est facultatif.
+- **Aide au diagnostic** : propose huit symptômes avec des observations et causes possibles, sans verdict matériel certain.
 
-L'interface propose le francais et l'anglais. Au premier lancement, elle suggere la langue detectee et demande confirmation. Maintiens X au demarrage pour revoir cette confirmation et changer la langue.
+**Haut/Bas** navigue, **A** ouvre, **B** revient ou annule une requête, **START** quitte. Depuis les résultats des versions, **Y** ouvre les observations diagnostiques et **X** relance la comparaison en ligne. **L** revient aux versions. Dans le diagnostic avancé, **X** lance le test des commandes, **Y** le test des couleurs et **R** le test HTTPS facultatif. Dans Réglages, **A** change le niveau de détail et **X** la langue. La confirmation de langue apparaît au premier lancement ; maintenir X au démarrage la rouvre. Seul ce choix est enregistré dans `sdmc:/3ds/ShieldChecker/ui-language.dat`.
 
-## Comprendre les resultats
+Les températures CPU et batterie ne sont pas mesurées. Le niveau de batterie est un palier de 0 à 5, pas un pourcentage d’usure. La mémoire affichée correspond à la région accessible aux applications. La présence d’un fichier ou d’un outil dans les chemins testés ne suffit pas à juger l’état de la console. Si le réseau échoue, les informations locales restent consultables. Le nouveau parcours de v1.1.0 a été compilé localement ; son test sur une Old 3DS réelle reste à faire.
 
-- **VERIFIE ET A JOUR** : la version trouvee correspond a la derniere version stable consultee. Aucune action n'est necessaire.
-- **NOUVELLE VERSION TROUVEE** : une version plus recente existe. Checker explique a quoi sert l'outil; il ne fait pas la mise a jour. Consulte le guide officiel avant d'agir.
-- **FICHIER NON TROUVE SUR SD** : le payload GodMode9 n'a pas ete trouve dans les chemins controles. Il peut etre installe autrement ou ne pas etre utilise. Ce n'est pas une alerte.
-- **STATUT INDISPONIBLE** : Checker n'a pas pu confirmer. Cela peut venir du Wi-Fi de la 3DS, de GitHub momentanement indisponible, d'un lien de release change ou d'un fichier/version qu'il ne sait pas lire. Rien n'est modifie; tu peux reessayer plus tard avec X.
+## Source et licence
 
-Luma3DS est affiche en premier car il est important au fonctionnement des fonctions homebrew. Checker lit sa version active et indique separement si `boot.firm` est present sur la SD : Luma peut aussi demarrer depuis CTRNAND. Pour GodMode9, Checker examine les chemins de payload habituels et signale le dossier `gm9` comme facultatif. Les trois applications sont reperees dans la liste des titres installes sur la SD. Pour hShop/3hs, Checker affiche seulement la presence et la comparaison des versions, sans conseil de mise a jour.
+Le [code de v1.1.0](source/) et ses ressources de construction sont consultables directement dans le dépôt. L’[archive source exacte de la release](https://github.com/Shield-77/Shield-Checker/releases/download/v1.1.0/Shield-Checker-source-v1.1.0.zip) est conservée séparément. Les anciennes archives v1.0.3 et v1.1.0-dev restent accessibles dans l’historique Git, mais ne décrivent pas la release actuelle.
 
-## Commandes
+Le code du projet est publié sous [GPL-3.0-only](LICENSE). La police Atkinson Hyperlegible conserve sa [licence SIL OFL](assets/LICENSE-AtkinsonHyperlegible.txt). Les outils de construction ont leurs propres licences et sont à obtenir séparément ; voir [LICENSES/BUILD-TOOLS.md](LICENSES/BUILD-TOOLS.md). L’identité visuelle SHIELD ne doit pas servir à présenter un fork comme une release officielle.
 
-- Accueil : **A** demarre la verification; **B** quitte.
-- Resultats : **Haut/Bas** choisit un outil; **A** affiche une explication; **X** relance la verification; **START** quitte.
-- Details : **B** revient aux resultats; **Haut/Bas** change d'outil.
+## Compiler
 
-## Taille du CIA
-
-La musique d'ambiance est desactivee et ses cinq fichiers ne sont pas inclus dans le CIA ni dans l'archive source v1.0.3. Ces fichiers audio d'origine ne sont plus necessaires pour compiler cette version. Les verifications ne demandent plus l'acces au DSP.
-
-## Identite de l'application
-
-- Nom : Shield Checker
-- Title ID : `000400000A210600`
-- Icone : `icon.png`
-- Banniere CIA : `banner.png`
-
-## Compilation
-
-Necessite devkitPro/devkitARM, libctru, libcurl, Jansson, mbedTLS, bannertool et makerom. Les executables tiers bannertool et makerom ne sont pas redistribues dans l'archive source ; il faut les obtenir separement depuis leurs projets et les placer dans `tools/`. Voir `LICENSES/BUILD-TOOLS.md`.
-
-```sh
-make
-```
-
-Sorties : `build/ShieldChecker.cia` et `build/ShieldChecker.elf`.
-
+Installer devkitPro/devkitARM, libctru, libcurl, Jansson et mbedTLS pour 3DS, ainsi que `makerom` et `bannertool`. Placer ces deux derniers aux chemins indiqués dans le Makefile, puis lancer `make`. Lancer `make -j1`. Les sorties prévues sont `build/ShieldChecker.elf` et `build/ShieldChecker.cia` (version CIA interne 7). Ce dépôt n’inclut pas les exécutables `makerom` et `bannertool`.
