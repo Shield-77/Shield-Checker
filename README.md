@@ -1,5 +1,7 @@
 # Shield Checker
 
+**Codex was used to generate the code**
+
 Shield Checker aide à comprendre l’état d’une console 3DS avec des explications simples. Il lit des informations locales et peut comparer certaines versions à des releases publiques. **Il ne répare rien, ne télécharge aucun CIA et ne modifie aucun fichier système.** Les résultats sont informatifs : une absence ou un statut indisponible ne prouve pas une panne.
 
 La version actuelle est [v1.1.0](https://github.com/Shield-77/Shield-Checker/releases/tag/v1.1.0), avec le CIA [ShieldChecker.cia](https://github.com/Shield-77/Shield-Checker/releases/download/v1.1.0/ShieldChecker.cia). Title ID : `000400000A210600`.
