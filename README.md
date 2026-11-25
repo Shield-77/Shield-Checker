@@ -1,6 +1,12 @@
 # Shield Checker
 
-**Codex was used to generate the code**
+## Télécharger / Download
+
+**[ShieldChecker.cia (v1.1.0)](https://github.com/Shield-77/Shield-Checker/releases/download/v1.1.0/ShieldChecker.cia)** · [Toutes les releases](https://github.com/Shield-77/Shield-Checker/releases)
+
+Sur une 3DS modifiée, ouvrir FBI > Remote Install > Scan QR Code.
+
+<img src="docs/cia-qr.svg" width="220" alt="QR code FBI vers le CIA v1.1.0" />
 
 Shield Checker aide à comprendre l’état d’une console 3DS avec des explications simples. Il lit des informations locales et peut comparer certaines versions à des releases publiques. **Il ne répare rien, ne télécharge aucun CIA et ne modifie aucun fichier système.** Les résultats sont informatifs : une absence ou un statut indisponible ne prouve pas une panne.
 
@@ -25,3 +31,7 @@ Le code du projet est publié sous [GPL-3.0-only](LICENSE). La police Atkinson H
 ## Compiler
 
 Installer devkitPro/devkitARM, libctru, libcurl, Jansson et mbedTLS pour 3DS, ainsi que `makerom` et `bannertool`. Placer ces deux derniers aux chemins indiqués dans le Makefile, puis lancer `make`. Lancer `make -j1`. Les sorties prévues sont `build/ShieldChecker.elf` et `build/ShieldChecker.cia` (version CIA interne 7). Ce dépôt n’inclut pas les exécutables `makerom` et `bannertool`.
+
+## Développement
+
+Le code a été généré avec l'aide d'OpenAI Codex, un assistant de programmation par IA. SHIELD-77 conçoit les fonctionnalités et teste les applications sur console lorsque possible.
